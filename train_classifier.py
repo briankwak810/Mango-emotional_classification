@@ -6,7 +6,7 @@ import torch
 MODEL_NAME = "beomi/KcELECTRA-base"
 
 # 1. Load Dataset
-df = pd.read_csv("data/mango_emotional_classification.csv", encoding="cp949")
+df = pd.read_csv("data/mango_emotional_classification.csv")
 dataset = Dataset.from_pandas(df)
 
 # 2. Tokenizer
@@ -24,7 +24,7 @@ model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_label
 # 4. Training Args
 training_args = TrainingArguments(
     output_dir="./classifier_checkpoints",
-    num_train_epochs=1,
+    num_train_epochs=3,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=32,
     eval_strategy="epoch",
@@ -54,7 +54,7 @@ trainer = Trainer(
     compute_metrics=compute_metrics
 )
 
-trainer.train()
+trainer.train(resume_from_checkpoint = "./classifier_checkpoints/checkpoint-24")
 
 # 7. Save
 model.save_pretrained("./mango-recall-classifier")
