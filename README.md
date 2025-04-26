@@ -1,4 +1,4 @@
-# Mango-recall_classification 🥭🧡
+# Mango recall-classification 🥭🧡
 
 > Recall classification module for Mango.  
 > Fine-tuned with 🤗 Huggingface Transformers.
@@ -9,6 +9,7 @@
 
 This module classifies Korean military conversations into two categories:  
 It is used to detect **emotionally meaningful recalls** in Mango.
+[🥭 Mango Repo](https://github.com/teddyyeo/Mango-backend)
 
 ---
 
